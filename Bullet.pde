@@ -89,6 +89,31 @@ class Bullet extends GameObject
         alive = false;
         objects.get(0).alive = false;
       }
+      
+      if(sheild.get(0).hit == false)
+      {
+        if (dist(position.x, position.y, objects.get(0).position.x, objects.get(0).position.y) < sheild.get(0).radius)
+        {
+          alive = false;
+          sheild.get(0).hit = true;
+        }
+      }
+      if(sheild.get(1).hit == false)
+      {
+        if (dist(position.x, position.y, objects.get(0).position.x, objects.get(0).position.y) < sheild.get(1).radius)
+        {
+          alive = false;
+          sheild.get(1).hit = true;
+        }
+      }
+      if(sheild.get(2).hit == false)
+      {
+        if (dist(position.x, position.y, objects.get(0).position.x, objects.get(0).position.y) < sheild.get(2).radius)
+        {
+          alive = false;
+          sheild.get(2).hit = true;
+        }
+      }
     }
     
     for(int i = 0; i < block.size(); i++)
@@ -101,14 +126,17 @@ class Bullet extends GameObject
       }
     }
     
-    if(hit0)
+    if(sheild.get(0).hit)
     {
+      sheild.get(0).position.y = 1000;
     }
-    if(hit1)
+    if(sheild.get(1).hit)
     {
+      sheild.get(1).position.y = 1000;
     }
-    if(hit2)
+    if(sheild.get(2).hit)
     {
+      sheild.get(2).position.y = 1000;
     }
     if(sheild.get(3).hit)
     {
@@ -123,7 +151,7 @@ class Bullet extends GameObject
       sheild.get(5).position.y = 1000;
     }
     
-    float speed = 20.0f;
+    float speed = 10.0f;
  
     //PVector velocity = PVector.mult(forward, speed);
     position.add(forward);
