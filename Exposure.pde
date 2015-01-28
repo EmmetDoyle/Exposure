@@ -5,6 +5,7 @@ Timer timer;
 Timer sheildTimer;
 int totalBlocks;
 int totalSheilds;
+int gameMode;
 
 void setup()
 {
@@ -23,39 +24,71 @@ void setup()
   timer.start();
   sheildTimer = new Timer(100);
   totalSheilds = 7;
+  gameMode = 0;
 }
 
 void draw()
 {
-  background(255);
-  for(int i = 0; i < objects.size(); i++)
+  if(gameMode == 0)
   {
-    objects.get(i).move();
-    objects.get(i).display();
-    if(objects.get(i).alive == false)
+    background(0);
+    for(int i = 0; i < sheild.size(); i++)
     {
-      objects.remove(i);
+      sheild.get(i).display();
+    }
+    if(keyPressed)
+    {
+      if(key == 'v')
+      {
+        gameMode = 1;
+      }
     }
   }
-  for(int i = 0; i < sheild.size(); i++)
+  
+  
+  else if(gameMode == 1)
   {
-    sheild.get(i).move();
-    sheild.get(i).display();
-  }
-  for(int i = 0; i < block.size(); i++)
-  {
-    block.get(i).move();
-    block.get(i).display();
+    background(255);
+    for(int i = 0; i < objects.size(); i++)
+    {
+      objects.get(i).move();
+      objects.get(i).display();
+      if(objects.get(i).alive == false)
+      {
+        objects.remove(i);
+      }
+    }
+    for(int i = 0; i < sheild.size(); i++)
+    {
+      sheild.get(i).move();
+      sheild.get(i).display();
+    }
+    for(int i = 0; i < block.size(); i++)
+    {
+      block.get(i).move();
+      block.get(i).display();
+    }
+    
+    if(block.size() < totalBlocks && timer.isFinished())
+    {
+      block.add(new Block());
+      timer.start();
+    }
+    
+    strokeWeight(1);
+    stroke(0);
+    fill(0);
+    //line(0, height / 2, width, height / 2);
   }
   
-  if(block.size() < totalBlocks && timer.isFinished())
+  else if(gameMode == 2)
   {
-    block.add(new Block());
-    timer.start();
+    background(0, 127, 255);
   }
   
-  strokeWeight(1);
-  stroke(0);
-  fill(0);
-  //line(0, height / 2, width, height / 2);
+  else if(gameMode == 3)
+  {
+    background(255, 127, 0);
+  }
+    
 }

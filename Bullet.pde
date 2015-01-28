@@ -54,6 +54,7 @@ class Bullet extends GameObject
       {
         alive = false;
         objects.get(1).alive = false;
+        gameMode = 2;
       }
       
       if(sheild.get(3).hit == false)
@@ -88,6 +89,7 @@ class Bullet extends GameObject
       {
         alive = false;
         objects.get(0).alive = false;
+        gameMode = 3;
       }
       
       if(sheild.get(0).hit == false)
@@ -154,6 +156,8 @@ class Bullet extends GameObject
     float speed = 10.0f;
  
     //PVector velocity = PVector.mult(forward, speed);
+    position.add(forward);
+    position.add(forward);
     position.add(forward);
   }
   
