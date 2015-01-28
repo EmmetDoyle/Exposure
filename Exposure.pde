@@ -29,6 +29,10 @@ void draw()
   {
     objects.get(i).move();
     objects.get(i).display();
+    if(objects.get(i).alive == false)
+    {
+      objects.remove(i);
+    }
   }
   for(int i = 0; i < block.size(); i++)
   {

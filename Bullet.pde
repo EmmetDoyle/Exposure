@@ -3,6 +3,7 @@ class Bullet extends GameObject
   float toLive = 5.0f;
   float ellapsed = 0.0;
   float timeDelta = 1.0f / 60.0f;
+  int number;
   
   Bullet(int number)
   {
@@ -14,17 +15,29 @@ class Bullet extends GameObject
     {
       colour = color(255, 127, 0);
     }
+    this.number = number;
   }
   
   void move()
   {
-    //ellapsed += timeDelta;
-    //if (ellapsed > toLive)
-    //{
-    //  alive = false;
-    //}
-    forward.x = sin(theta + (PI/2));
-    forward.y = -cos(theta + (PI/2));
+    if(position.x < 0 || position.x > width)
+    {
+       alive = false;
+    }
+    if(position.y < 0 || position.y > height)
+    {
+      alive = false;
+    }
+    if(number == 1)
+    {
+      forward.x = sin(theta + (PI/2));
+      forward.y = -cos(theta + (PI/2));
+    }
+    else if(number == 2)
+    {
+      forward.x = sin(theta + 3*(PI/2));
+      forward.y = -cos(theta + 3*(PI/2));
+    }
     
     float speed = 10.0f;
  
