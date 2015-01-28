@@ -62,7 +62,7 @@ class Player extends GameObject
     
     stroke(colour);
     strokeWeight(1);
-    noFill();
+    fill(colour);
     if(number == 1)
     {
       ellipse(0, 0, radius * 2, radius * 2);
