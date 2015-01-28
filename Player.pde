@@ -35,9 +35,17 @@ class Player extends GameObject
         {
           theta -= 0.1f;
         }
-        else if(key == 's')
+        if(key == 's')
         {
           theta += 0.1f;
+        }
+        else if(key == 'c')
+        {
+          Bullet bullet = new Bullet(1);
+          bullet.position = position.get();
+          bullet.theta = theta;
+          objects.add(bullet);
+          //ellapsed = 0.0f;
         }
       }
       else if(number == 2)
@@ -46,9 +54,17 @@ class Player extends GameObject
         {
           theta -= 0.1f;
         }
-        else if(key == 'k')
+        if(key == 'k')
         {
           theta += 0.1f;
+        }
+        else if(key == 'n')
+        {
+          Bullet bullet = new Bullet(2);
+          bullet.position = position.get();
+          bullet.theta = theta;
+          objects.add(bullet);
+          //ellapsed = 0.0f;
         }
       }
     }
