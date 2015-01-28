@@ -32,6 +32,5 @@ class Block
     stroke(colour);
     fill(colour);
     rect(x, y, size, size);
-    println(size);
   }
 }

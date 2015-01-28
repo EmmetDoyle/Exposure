@@ -39,6 +39,16 @@ class Bullet extends GameObject
       forward.y = -cos(theta + 3*(PI/2));
     }
     
+    for(int i = 0; i < block.size(); i++)
+    {
+      if(dist(position.x, position.y, (block.get(i).x + (block.get(i).size / 2)), (block.get(i).y + (block.get(i).size / 2))) < dist(block.get(i).x, block.get(i).y, (block.get(i).x + (block.get(i).size / 2)), (block.get(i).y + (block.get(i).size / 2))))
+      {
+        block.remove(i);
+        alive = false;
+        //break;
+      }
+    }
+    
     float speed = 10.0f;
  
     //PVector velocity = PVector.mult(forward, speed);

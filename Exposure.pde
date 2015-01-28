@@ -49,5 +49,5 @@ void draw()
   strokeWeight(1);
   stroke(0);
   fill(0);
-  line(0, height / 2, width, height / 2);
+  //line(0, height / 2, width, height / 2);
 }
