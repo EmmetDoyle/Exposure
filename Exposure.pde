@@ -6,8 +6,8 @@ int totalBlocks;
 void setup()
 {
   size(800, 600);
-  objects.add(new Player(0, (height/2), 0));
-  objects.add(new Player(width, (height/2), 0));
+  objects.add(new Player(0, (height/2), 0, 1));
+  objects.add(new Player(width, (height/2), 0, 2));
   objects.add(new Sheild(200, 0, 0, 127, 255));
   objects.add(new Sheild(270, 0, 0, 127, 255));
   objects.add(new Sheild(340, 0, 0, 127, 255));
