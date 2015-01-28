@@ -37,9 +37,9 @@ class Player extends GameObject
   
   void display()
   {
-    //pushMatrix();
-    //translate(position.x, position.y);
-    //rotate(theta);
+    pushMatrix();
+    translate(position.x, position.y);
+    rotate(theta);
     
     stroke(colour);
     strokeWeight(1);
@@ -48,6 +48,6 @@ class Player extends GameObject
     ellipse(position.x, centY, radius * 2, radius * 2);
     rect(gunX, gunY, gunSizeX, gunSizeY);
     
-    //popMatrix();
+    popMatrix();
   }
 }
