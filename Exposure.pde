@@ -6,12 +6,14 @@ Timer sheildTimer;
 int totalBlocks;
 int totalSheilds;
 int gameMode;
+boolean[] keys = new boolean[526];
 
 void setup()
 {
   size(800, 600);
-  objects.add(new Player(0, (height/2), 0, 1));
-  objects.add(new Player(width, (height/2), 0, 2));
+  setUpPlayerControllers();
+  //objects.add(new Player(0, (height/2), 0, 1));
+  //objects.add(new Player(width, (height/2), 0, 2));
   sheild.add(new Sheild(200, 0, 1));
   sheild.add(new Sheild(270, 0, 1));
   sheild.add(new Sheild(340, 0, 1));
@@ -38,7 +40,7 @@ void draw()
     }
     if(keyPressed)
     {
-      if(key == 'v')
+      if(key == ' ')
       {
         gameMode = 1;
       }
@@ -91,4 +93,55 @@ void draw()
     background(255, 127, 0);
   }
     
+}
+
+void keyPressed()
+{
+  keys[keyCode] = true;
+}
+
+void keyReleased()
+{
+  keys[keyCode] = false;
+}
+
+boolean checkKey(char theKey)
+{
+  return keys[Character.toUpperCase(theKey)];
+}
+
+char buttonNameToKey(XML xml, String buttonName)
+{
+  String value =  xml.getChild(buttonName).getContent();
+  if ("LEFT".equalsIgnoreCase(value))
+  {
+    return LEFT;
+  }
+  if ("RIGHT".equalsIgnoreCase(value))
+  {
+    return RIGHT;
+  }
+  if ("UP".equalsIgnoreCase(value))
+  {
+    return UP;
+  }
+  if ("DOWN".equalsIgnoreCase(value))
+  {
+    return DOWN;
+  }
+  //.. Others to follow
+  return value.charAt(0);  
+}
+
+void setUpPlayerControllers()
+{
+  XML xml = loadXML("arcade.xml");
+  XML[] children = xml.getChildren("player");
+  int gap = width / (children.length + 1);
+  
+  for(int i = 0 ; i < children.length ; i ++)  
+  {
+    XML playerXML = children[i];
+    objects.add(new Player(i + 1, playerXML, i * width, (height/2), 0));
+  }
 }
