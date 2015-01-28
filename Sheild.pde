@@ -4,6 +4,7 @@ class Sheild extends GameObject
   float thickness;
   int number;
   float y;
+  boolean hit;
   
   Sheild(float radius, float x, int number)
   {
@@ -21,6 +22,7 @@ class Sheild extends GameObject
     }
     thickness = 50;
     y = 0;
+    hit = false;
   }
   
   void move()

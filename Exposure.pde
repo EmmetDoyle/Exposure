@@ -1,4 +1,5 @@
 ArrayList<GameObject> objects = new ArrayList<GameObject>();
+ArrayList<Sheild> sheild = new ArrayList<Sheild>();
 ArrayList<Block> block = new ArrayList<Block>();
 Timer timer;
 Timer sheildTimer;
@@ -10,12 +11,12 @@ void setup()
   size(800, 600);
   objects.add(new Player(0, (height/2), 0, 1));
   objects.add(new Player(width, (height/2), 0, 2));
-  objects.add(new Sheild(200, 0, 1));
-  objects.add(new Sheild(270, 0, 1));
-  objects.add(new Sheild(340, 0, 1));
-  objects.add(new Sheild(200, width, 2));
-  objects.add(new Sheild(270, width, 2));
-  objects.add(new Sheild(340, width, 2));
+  sheild.add(new Sheild(200, 0, 1));
+  sheild.add(new Sheild(270, 0, 1));
+  sheild.add(new Sheild(340, 0, 1));
+  sheild.add(new Sheild(340, width, 2));
+  sheild.add(new Sheild(270, width, 2));
+  sheild.add(new Sheild(200, width, 2));
   totalBlocks = 30;
   block.add(new Block());
   timer = new Timer(250);
@@ -35,6 +36,11 @@ void draw()
     {
       objects.remove(i);
     }
+  }
+  for(int i = 0; i < sheild.size(); i++)
+  {
+    sheild.get(i).move();
+    sheild.get(i).display();
   }
   for(int i = 0; i < block.size(); i++)
   {
