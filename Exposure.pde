@@ -3,6 +3,7 @@ ArrayList<Block> block = new ArrayList<Block>();
 Timer timer;
 Timer sheildTimer;
 int totalBlocks;
+int totalSheilds;
 
 void setup()
 {
@@ -20,6 +21,7 @@ void setup()
   timer = new Timer(250);
   timer.start();
   sheildTimer = new Timer(100);
+  totalSheilds = 7;
 }
 
 void draw()

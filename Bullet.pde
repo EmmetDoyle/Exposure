@@ -4,6 +4,7 @@ class Bullet extends GameObject
   float ellapsed = 0.0;
   float timeDelta = 1.0f / 60.0f;
   int number;
+  float y;
   
   Bullet(int number)
   {
@@ -16,6 +17,7 @@ class Bullet extends GameObject
       colour = color(255, 127, 0);
     }
     this.number = number;
+    y = 5;
   }
   
   void move()
@@ -37,6 +39,23 @@ class Bullet extends GameObject
     {
       forward.x = sin(theta + 3*(PI/2));
       forward.y = -cos(theta + 3*(PI/2));
+    }
+    
+    if(number == 1)
+    {
+      if (dist(position.x, position.y, objects.get(1).position.x, objects.get(1).position.y) < 80)
+      {
+        alive = false;
+        objects.get(1).alive = false;
+      }
+    }
+    else if(number == 2)
+    {
+      if (dist(position.x, position.y, objects.get(0).position.x, objects.get(0).position.y) < 80)
+      {
+        alive = false;
+        objects.get(0).alive = false;
+      }
     }
     
     for(int i = 0; i < block.size(); i++)
@@ -64,7 +83,7 @@ class Bullet extends GameObject
     strokeWeight(1);
     stroke(colour);
     fill(colour);
-    line(0, - 5, 0, 5);
+    line(0, - y, 0, y);
     
     popMatrix();
   }
